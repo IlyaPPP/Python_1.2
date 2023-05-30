@@ -24,31 +24,18 @@
 # ноутбук
 #     12
 
-keys_1 = ["А", "В", "Е", "И", "Н", "О", "Р", "С", "Т"]
-keys_2 = ["Д", "К", "Л", "М", "П", "У"]
-keys_3 = ["Б", "Г", "Ё", "Ь", "Я"]
-keys_4 = ["Й", "Ы"]
-keys_5 = ["Ж", "З", "Х", "Ц", "Ч"]
-keys_6 = ["Ш", "Э", "Ю"]
-keys_7 = ["Ф", "Щ", "Ъ"]
+keys_1 = dict.fromkeys(["А", "В", "Е", "И", "Н", "О", "Р", "С", "Т"], 1)
+keys_2 = dict.fromkeys(["Д", "К", "Л", "М", "П", "У"], 2)
+keys_3 = dict.fromkeys(["Б", "Г", "Ё", "Ь", "Я"], 3)
+keys_4 = dict.fromkeys(["Й", "Ы"], 4)
+keys_5 = dict.fromkeys(["Ж", "З", "Х", "Ц", "Ч"], 5)
+keys_6 = dict.fromkeys(["Ш", "Э", "Ю"], 8)
+keys_7 = dict.fromkeys(["Ф", "Щ", "Ъ"], 10)
 
-x = input().upper()
+keys = keys_1 | keys_2 | keys_3 | keys_4 | keys_5 | keys_6 | keys_7
+
+x = input('Введите слово: ').upper()
 sum = 0
-
-for j in range(len(x)):
-    for i in keys_1:
-        if x[j] == i: sum += 1
-    for i in keys_2:
-        if x[j] == i: sum += 2
-    for i in keys_3:
-        if x[j] == i: sum += 3
-    for i in keys_4:
-        if x[j] == i: sum += 4
-    for i in keys_5:
-        if x[j] == i: sum += 4
-    for i in keys_6:
-        if x[j] == i: sum += 8
-    for i in keys_7:
-        if x[j] == i: sum += 10
-    
+for i in x:
+    sum += keys[i]
 print(sum)
